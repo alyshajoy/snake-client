@@ -1,5 +1,20 @@
 const net = require("net");
 
+const setupInput = function () {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
+  stdin.on("data", handleUserInput);
+  return stdin;
+}
+
+const handleUserInput = function (key) {
+  if (key === '\u0003') {
+    process.exit();
+  }
+}
+
 const connect = function () {
   const conn = net.createConnection({
     host: "localhost",
@@ -23,4 +38,7 @@ const connect = function () {
 
 }
 
-module.exports = connect;
+module.exports = {
+  connect,
+  setupInput
+};
