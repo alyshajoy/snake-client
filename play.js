@@ -5,4 +5,4 @@ const { setupInput } = require("./input");
 console.log("Connecting...");
 const connection = connect();
 
-setupInput(connection);
+setupInput(connection); // connect to server and allow server to receive input from client
