@@ -6,7 +6,7 @@ If you grew up in the 90s, you may remember this better as Meerka Chase from Neo
 
 This is simply a multiplayer take on the genre.
 
-Before you can run this client, you will need to be running the server side which you can download and install from here. 
+Before you can run this client, you will need to be running the server side which you can download and install from [here](https://github.com/lighthouse-labs/snek-multiplayer). 
 
 ## Final Product
 

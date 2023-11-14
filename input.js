@@ -1,7 +1,7 @@
-const { MOVE_UP_KEY, MOVE_DOWN_KEY, MOVE_LEFT_KEY, MOVE_RIGHT_KEY } = require("./constants.js");
+const { MOVES } = require("./constants.js");
 let connection;
 
-const setupInput = function (conn) {
+const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -11,31 +11,15 @@ const setupInput = function (conn) {
   return stdin;
 };
 
-const handleUserInput = function (key) { // function that binds keys to specific actions
+const handleUserInput = function(key) { // function that binds keys to specific actions
   if (key === '\u0003') {
     process.exit();
-  };
-  if (key === MOVE_UP_KEY) {
-    connection.write("Move: up");
-  };
-  if (key === MOVE_LEFT_KEY) {
-    connection.write("Move: left");
-  };
-  if (key === MOVE_DOWN_KEY) {
-    connection.write("Move: down");
-  };
-  if (key === MOVE_RIGHT_KEY) {
-    connection.write("Move: right");
-  };
-  if (key === "h") {
-    connection.write("Say: Hey!");
-  };
-  if (key === "m") {
-    connection.write("Say: move!");
-  };
-  if (key === "b") {
-    connection.write("Say: booya");
-  };
+  }
+  const moveCommand = MOVES[key]; // will be undefined if key is not in MOVES object
+  if (moveCommand) { // if not undefined, will send action listed in MOVES object to server
+    connection.write(moveCommand);
+  }
+
 };
 
 module.exports = { setupInput };

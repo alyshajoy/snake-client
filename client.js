@@ -1,7 +1,7 @@
 const net = require("net");
-const { IP, PORT } = require("./constants")
+const { IP, PORT } = require("./constants");
 
-const connect = function () {
+const connect = function() {
   const conn = net.createConnection({ // connect to server
     host: IP,
     port: PORT
@@ -17,12 +17,12 @@ const connect = function () {
   });
 
   conn.on('data', (data) => { // log any data that is sent to client
-    console.log(data)
+    console.log(data);
   });
 
   return conn;
 
-}
+};
 
 module.exports = {
   connect
